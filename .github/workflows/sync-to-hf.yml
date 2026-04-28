@@ -12,6 +12,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          lfs: true
-      - name: Push to Hugging Face Space
-        run: git push https://${{ vars.HF_USERNAME }}:${{ secrets.HF_TOKEN }}@huggingface.co/spaces/${{ vars.HF_USERNAME }}/${{ vars.HF_SPACE_NAME }} main
+          
+      - name: Push to Hugging Face Space (Force)
+        env:
+          HF_USERNAME: ${{ vars.HF_USERNAME }}
+          HF_SPACE_NAME: ${{ vars.HF_SPACE_NAME }}
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          git remote add hf https://${HF_USERNAME}:${HF_TOKEN}@huggingface.co/spaces/${HF_USERNAME}/${HF_SPACE_NAME}
+          git push hf main --force
