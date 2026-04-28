@@ -14,6 +14,4 @@ jobs:
           fetch-depth: 0
           lfs: true
       - name: Push to Hugging Face Space
-        run: git push https://${{ vars.shihir7744 }}:${{ secrets.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 }}@huggingface.co/spaces/${{ vars.shihir7744 }}/${{ vars.n8n }} main
-
-
+        run: git push https://${{ vars.HF_USERNAME }}:${{ secrets.HF_TOKEN }}@huggingface.co/spaces/${{ vars.HF_USERNAME }}/${{ vars.HF_SPACE_NAME }} main
