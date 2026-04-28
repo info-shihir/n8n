@@ -15,3 +15,5 @@ jobs:
           lfs: true
       - name: Push to Hugging Face Space
         run: git push https://${{ vars.HF_USERNAME }}:${{ secrets.HF_TOKEN }}@huggingface.co/spaces/${{ vars.HF_USERNAME }}/${{ vars.HF_SPACE_NAME }} main
+
+
